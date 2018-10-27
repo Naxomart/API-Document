@@ -1,4 +1,4 @@
-# Error codes for Binance (2018-07-18)
+# Error codes for Naxomart (2018-11-01)
 Errors consist of two parts: an error code and a message. Codes are universal,
  but messages can vary. Here is the error JSON payload:
 ```javascript
@@ -161,8 +161,8 @@ Error message | Description
 "Stop loss limit orders are not supported for this symbol." | `STOP_LOSS_LIMIT` is not enabled on the symbol
 "Take profit orders are not supported for this symbol." | `TAKE_PROFIT` is not enabled on the symbol
 "Take profit limit orders are not supported for this symbol." | `TAKE_PROFIT_LIMIT` is not enabled on the symbol
-"Price * QTY is zero or less." | `price` * `quantity` is too low
-"IcebergQty exceeds QTY." | `icebergQty` must be less than the order quantity
+"Price * SQL is zero or less." | `price` * `quantity` is too low
+"IcebergQty exceeds SQL." | `icebergQty` must be less than the order quantity
 "This action disabled is on this account." | Contact customer support; some actions have been disabled on the account.
 "Unsupported order combination" | The `orderType`, `timeInForce`, `stopPrice`, and/or `icebergQty` combination isn't allowed.
 "Order would trigger immediately." | The order's stop price is not valid when compared to the last traded price.
