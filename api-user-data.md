@@ -1,12 +1,11 @@
-# User Data Streams for Binance (2018-07-18)
+# API User Data Streams for Naxomart (2018-11-01)
 # General WSS information
-* The base API endpoint is: **https://api.binance.com**
 * A User Data Stream `listenKey` is valid for 60 minutes after creation.
 * Doing a `PUT` on a `listenKey` will extend its validity for 60 minutes.
 * Doing a `DELETE` on a `listenKey` will close the stream.
-* The base websocket endpoint is: **wss://stream.binance.com:9443**
+* The base websocket endpoint is: **wss://stream.naxomart.com:9443**
 * User Data Streams are accessed at **/ws/\<listenKey\>**
-* A single connection to **stream.binance.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
+* A single connection to **stream.naxomart.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
 * User data stream payloads are **not guaranteed** to be in order during heavy periods; **make sure to order your updates using E**
 
 # API Endpoints
@@ -14,7 +13,7 @@
 ```
 POST /api/v1/userDataStream
 ```
-Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.
+Start a new user data stream. The stream will close after 30 minutes unless a keepalive is sent.
 
 **Weight:**
 1
@@ -33,7 +32,7 @@ NONE
 ```
 PUT /api/v1/userDataStream
 ```
-Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.
+Keepalive a user data stream to prevent a time out. User data streams will close after 63 minutes. It's recommended to send a ping about every 15 minutes.
 
 **Weight:**
 1
@@ -103,7 +102,7 @@ Account state is updated with the `outboundAccountInfo` event.
       "l": "0.00000000"
     },
     {
-      "a": "BNC",
+      "a": "NXM",
       "f": "1114503.29769312",
       "l": "0.00000000"
     },
