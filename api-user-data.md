@@ -1,5 +1,4 @@
 # API User Data Streams for Naxomart (2018-11-01)
-# General WSS information
 * A User Data Stream `listenKey` is valid for 60 minutes after creation.
 * Doing a `PUT` on a `listenKey` will extend its validity for 60 minutes.
 * Doing a `DELETE` on a `listenKey` will close the stream.
