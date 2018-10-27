@@ -27,7 +27,7 @@ NONE
 }
 ```
 
-## Ping/Keep-alive a listenKey
+## Ping/Keep-alive a listKey
 ```
 PUT /api/v1/userDataStream
 ```
@@ -47,7 +47,7 @@ listenKey | STRING | YES
 {}
 ```
 
-## Close a listenKey
+## Close a listKey
 ```
 DELETE /api/v1/userDataStream
 ```
