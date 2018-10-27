@@ -1056,7 +1056,7 @@ Otherwise most recent orders are returned.
     "price": "4.00000100",
     "qty": "12.00000000",
     "commission": "10.10000000",
-    "commissionAsset": "BNB",
+    "commissionAsset": "NXM",
     "time": 1499865549590,
     "isBuyer": true,
     "isMaker": false,
