@@ -2,8 +2,8 @@
 * A User Data Stream `listKey` is valid for 60 minutes after creation.
 * Doing a `PUT` on a `listKey` will extend its validity for 60 minutes.
 * Doing a `DELETE` on a `listKey` will close the stream.
-* The base websocket endpoint is: **wss://stream.naxomart.com:9443**
-* User Data Streams are accessed at **/ws/\<listenKey\>**
+* The base websocket endpoint is: **wss://stream.naxomart.com:9433**
+* User Data Streams are accessed at **/ws/\<listKey\>**
 * A single connection to **stream.naxomart.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
 * User data stream payloads are **not guaranteed** to be in order during heavy periods; **make sure to order your updates using E**
 
