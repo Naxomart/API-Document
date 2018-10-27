@@ -244,7 +244,7 @@ Order book price and quantity depth updates used to locally manage an order book
 ```
 
 ## How to manage a local order book correctly
-1. Open a stream to **wss://stream.naxomart.com:9433/ws/bnbbtc@depth**
+1. Open a stream to **wss://stream.naxomart.com:9433/ws/eth/nxm@depth**
 2. Buffer the events you receive from the stream
 3. Drop any event where `u` is <= `lastUpdateId` in the snapshot
 4. The first processed should have `U` <= `lastUpdateId`+1 **AND** `u` >= `lastUpdateId`+1
