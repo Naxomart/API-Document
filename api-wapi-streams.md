@@ -1,6 +1,5 @@
-# Public WAPI for Binance (2018-07-18)
+# Public WAPI for Naxomart (2018-11-01)
 # General API Information
-* The base endpoint is: **https://api.binance.com**
 * All endpoints return either a JSON object or array.
 * Data is returned in **ascending** order. Oldest first, newest last.
 * All time and timestamp related fields are in milliseconds.
@@ -102,76 +101,25 @@ Linux command line using `echo`, `openssl`, and `curl`.
 
 Key | Value
 ------------ | ------------
-apiKey | vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A
-secretKey | NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j
+apiKey | kmDHN4Hmv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPykhnH4co14y7Ju91du6Nd
+secretKey | KH7NtmdSJYdKjVHjA7PZj4M6G2R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fJ87Nl
 
 
 Parameter | Value
 ------------ | ------------
 asset | ETH
-address  |0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b
+address  |0x001866Ae5B3de6cAa5a51543FD9fB64f524F5478
 addressTag | 1 (Secondary address identifier for coins like XRP,XMR etc.)
 amount | 1
 recvWindow | 5000
 name | addressName (Description of the address)
 timestamp | 1508396497000
-signature  | 157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320
+signature  | 0x56c339a60907073e0f3be8b27d41c79b256e859fb8a268076e5e039fc0398110
 
 
 ### Example 1: As a query string
-* **queryString:** asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&name=test&timestamp=1510903211000
-* **HMAC SHA256 signature:**
+* **queryString:** asset=ETH&address=0x001866Ae5B3de6cAa5a51543FD9fB64f524F5478&amount=1&recvWindow=5000&name=test&timestamp=1510903211000
 
-    ```
-    [linux]$ echo -n "asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&timestamp=1510903211000" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
-    (stdin)= 157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320
-    ```
-
-
-* **curl command:**
-
-    ```
-    (HMAC SHA256)
-    [linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://www.binance.com/wapi/v3/withdraw.html?asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&name=addressName&timestamp=1510903211000&signature=157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320'
-    ```
-
-### Example 2: As a request body
-* **requestBody:** asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&name=test&timestamp=1510903211000
-* **HMAC SHA256 signature:**
-
-    ```
-    [linux]$ echo -n "asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&timestamp=1510903211000" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
-    (stdin)= 157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320
-    ```
-
-
-* **curl command:**
-
-    ```
-    (HMAC SHA256)
-    [linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://www.binance.com/wapi/v3/withdraw.html' -d 'asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&name=addressName&timestamp=1510903211000&signature=157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320'
-    ```
-
-### Example 3: Mixed query string and request body
-* **queryString:** asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b
-* **requestBody:** amount=1&recvWindow=5000&name=test&timestamp=1510903211000
-* **HMAC SHA256 signature:**
-
-    ```
-    [linux]$ echo -n "asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amount=1&recvWindow=5000&timestamp=1510903211000" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
-    (stdin)= 157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320
-    ```
-
-
-* **curl command:**
-
-    ```
-    (HMAC SHA256)
-    [linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://www.binance.com/wapi/v3/withdraw.html?asset=ETH&address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b' -d 'amount=1&recvWindow=5000&name=addressName&timestamp=1510903211000&signature=157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320'
-    ```
-
-Note that the signature is different in example 3.
-There is no & between "address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b" and "amount=1".
 
 ### Withdraw
 ```
@@ -188,7 +136,7 @@ Name | Type | Mandatory | Description
 ------------ | ------------ | ------------ | ------------
 asset	|  STRING |	YES	
 address	 | STRING | YES	
-addressTag | STRING | NO | Secondary address identifier for coins like XRP,XMR etc.
+addressTag | STRING | NO | Secondary address identifier for coins like ETH,NXM etc.
 amount | DECIMAL | YES	
 name | STRING | NO | Description of the address
 recvWindow | LONG | NO	
@@ -199,7 +147,7 @@ timestamp | LONG | YES
 {
     "msg": "success",
     "success": true,
-    "id":"7213fea8e94b4a5593d507237e5a555b"
+    "id":"7553fea8e94b4a5593d507237e5a5bdb"
 }
 ]
 ```
@@ -234,19 +182,10 @@ timestamp | LONG | YES
             "insertTime": 1508198532000,
             "amount": 0.04670582,
             "asset": "ETH",
-            "address": "0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b",
-            "txId": "0xdf33b22bdb2b28b1f75ccd201a4a4m6e7g83jy5fc5d5a9d1340961598cfcb0a1",
+            "address": "0x001866Ae5B3de6cAa5a51543FD9fB64f524F5478",
+            "txId": "0x56c339a60907073e0f3be8b27d41c79b256e859fb8a268076e5e039fc0398110",
             "status": 1
         },
-        {
-            "insertTime": 1508298532000,
-            "amount": 1000,
-            "asset": "XMR",
-            "address": "463tWEBn5XZJSxLU34r6g7h8jtxuNcDbjLSjkn3XAXHCbLrTTErJrBWYgHJQyrCwkNgYvyV3z8zctJLPCZy24jvb3NiTcTJ",
-            "addressTag": "342341222",
-            "txId": "b3c6219639c8ae3f9cf010cdc24fw7f7yt8j1e063f9b4bd1a05cb44c4b6e2509",
-            "status": 1
-        }
     ],
     "success": true
 }
@@ -273,37 +212,6 @@ recvWindow | LONG | NO
 timestamp | LONG | YES	
 
 
-**Response:**
-```javascript
-{
-    "withdrawList": [
-        {
-            "id":"7213fea8e94b4a5593d507237e5a555b"
-            "amount": 1,
-            "address": "0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b",
-            "asset": "ETH",
-            "txId": "0xdf33b22bdb2b28b1f75ccd201a4a4m6e7g83jy5fc5d5a9d1340961598cfcb0a1",
-            "applyTime": 1508198532000 
-            "status": 4
-        },
-        {
-            "id":"7213fea8e94b4a5534ggsd237e5a555b"
-            "amount": 1000,
-            "address": "463tWEBn5XZJSxLU34r6g7h8jtxuNcDbjLSjkn3XAXHCbLrTTErJrBWYgHJQyrCwkNgYvyV3z8zctJLPCZy24jvb3NiTcTJ",
-            "addressTag": "342341222",
-            "txId": "b3c6219639c8ae3f9cf010cdc24fw7f7yt8j1e063f9b4bd1a05cb44c4b6e2509",
-            "asset": "XMR",
-            "applyTime": 1508198532000,
-            "status": 4
-        }
-    ],
-    "success": true
-}
-```
-
-
-
-
 ### Deposit Address (USER_DATA)
 ```
 GET  /wapi/v3/depositAddress.html (HMAC SHA256)
@@ -326,10 +234,10 @@ timestamp | LONG | YES
 ```javascript
 [
 {
-    "address": "0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b",
+    "address": "0x001866ae5b3de6caa5a51543fd9fb64f524f5478",
     "success": true,
-    "addressTag": "1231212",
-    "asset": "BNB"
+    "addressTag": "3977711",
+    "asset": "NXM"
 }
 ]
 ```
@@ -480,11 +388,11 @@ symbol | STRING | NO
 ```javascript
 {
 	"tradeFee": [{
-		"symbol": "ADABNB",
+		"symbol": "NXM/ETC",
 		"maker": 0.9000,
 		"taker": 1.0000
 	}, {
-		"symbol": "BNBBTC",
+		"symbol": "ETH/NXM",
 		"maker": 0.3000,
 		"taker": 0.3000
 	}],
@@ -516,14 +424,14 @@ timestamp | LONG | YES
 {
     "success": true,
     "assetDetail": {
-        "CTR": {
+        "NXM": {
             "minWithdrawAmount": "70.00000000", //min withdraw amount
             "depositStatus": false,//deposit status
             "withdrawFee": 35, // withdraw fee
             "withdrawStatus": true, //withdraw status
             "depositTip": "Delisted, Deposit Suspended" //reason
         },
-        "SKY": {
+        "ETH": {
             "minWithdrawAmount": "0.02000000",
             "depositStatus": true,
             "withdrawFee": 0.01,
