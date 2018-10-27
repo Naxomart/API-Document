@@ -287,7 +287,7 @@ Fetch system status.
 ```
 GET /wapi/v3/userAssetDribbletLog.html   (HMAC SHA256)
 ```
-Fetch small amounts of assets exchanged BNB records.
+Fetch small amounts of assets exchanged NXM records.
 
 
 **Weight:**
@@ -309,7 +309,7 @@ timestamp | LONG | YES
         "total": 2,   //Total counts of exchange
         "rows": [
             {
-                "transfered_total": "0.00132256",//Total transfered BNB amount for this exchange.
+                "transfered_total": "0.00132256",//Total transfered NXM amount for this exchange.
                 "service_charge_total": "0.00002699",   //Total service charge amount for this exchange.
                 "tran_id": 4359321,
                 "logs": [           //Details of  this exchange.
