@@ -1,6 +1,5 @@
-# Public Rest API for Binance (2018-07-18)
+# Public Rest API for Naxomart (2018-11-01)
 # General API Information
-* The base endpoint is: **https://api.binance.com**
 * All endpoints return either a JSON object or array.
 * Data is returned in **ascending** order. Oldest first, newest last.
 * All time and timestamp related fields are in milliseconds.
@@ -561,7 +560,7 @@ symbol | STRING | NO |
 **Response:**
 ```javascript
 {
-  "symbol": "BNBBTC",
+  "symbol": "ETH/NXM",
   "priceChange": "-94.99999800",
   "priceChangePercent": "-95.960",
   "weightedAvgPrice": "0.29628482",
@@ -586,7 +585,7 @@ OR
 ```javascript
 [
   {
-    "symbol": "BNBBTC",
+    "symbol": "ETH/NXM",
     "priceChange": "-94.99999800",
     "priceChangePercent": "-95.960",
     "weightedAvgPrice": "0.29628482",
@@ -1087,7 +1086,7 @@ Otherwise most recent orders are returned.
 ```javascript
 [
   {
-    "symbol": "BNBBTC",
+    "symbol": "ETH/NXM",
     "id": 28457,
     "orderId": 100234,
     "price": "4.00000100",
