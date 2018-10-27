@@ -1,7 +1,7 @@
 # API User Data Streams for Naxomart (2018-11-01)
-* A User Data Stream `listenKey` is valid for 60 minutes after creation.
-* Doing a `PUT` on a `listenKey` will extend its validity for 60 minutes.
-* Doing a `DELETE` on a `listenKey` will close the stream.
+* A User Data Stream `listKey` is valid for 60 minutes after creation.
+* Doing a `PUT` on a `listKey` will extend its validity for 60 minutes.
+* Doing a `DELETE` on a `listKey` will close the stream.
 * The base websocket endpoint is: **wss://stream.naxomart.com:9443**
 * User Data Streams are accessed at **/ws/\<listenKey\>**
 * A single connection to **stream.naxomart.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
@@ -23,7 +23,7 @@ NONE
 **Response:**
 ```javascript
 {
-  "listenKey": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1"
+  "listKey": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1"
 }
 ```
 
@@ -60,7 +60,7 @@ Close out a user data stream.
 
 Name | Type | Mandatory | Description
 ------------ | ------------ | ------------ | ------------
-listenKey | STRING | YES
+listKey | STRING | YES
 
 **Response:**
 ```javascript
