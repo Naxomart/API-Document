@@ -1,12 +1,11 @@
-# Web Socket Streams for Binance (2018-07-18)
-# General WSS information
-* The base endpoint is: **wss://stream.binance.com:9443**
+# Web Socket Streams for Naxomart (2018-11-01)
+* The base endpoint is: **wss://stream.naxomart.com:9433**
 * Streams can be access either in a single raw stream or a combined stream
 * Raw streams are accessed at **/ws/\<streamName\>**
 * Combined streams are accessed at **/stream?streams=\<streamName1\>/\<streamName2\>/\<streamName3\>**
 * Combined stream events are wrapped as follows: **{"stream":"\<streamName\>","data":\<rawPayload\>}**
 * All symbols for streams are **lowercase**
-* A single connection to **stream.binance.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
+* A single connection to **stream.naxomart.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
 
 # Detailed Stream information
 ## Aggregate Trade Streams
@@ -19,7 +18,7 @@ The Aggregate Trade Streams push trade information that is aggregated for a sing
 {
   "e": "aggTrade",  // Event type
   "E": 123456789,   // Event time
-  "s": "BNBBTC",    // Symbol
+  "s": "ETH/NXM",    // Symbol
   "a": 12345,       // Aggregate trade ID
   "p": "0.001",     // Price
   "q": "100",       // Quantity
@@ -41,7 +40,7 @@ The Trade Streams push raw trade information; each trade has a unique buyer and 
 {
   "e": "trade",     // Event type
   "E": 123456789,   // Event time
-  "s": "BNBBTC",    // Symbol
+  "s": "ETH/NXM",    // Symbol
   "t": 12345,       // Trade ID
   "p": "0.001",     // Price
   "q": "100",       // Quantity
@@ -83,11 +82,11 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 {
   "e": "kline",     // Event type
   "E": 123456789,   // Event time
-  "s": "BNBBTC",    // Symbol
+  "s": "ETH/NXM",    // Symbol
   "k": {
     "t": 123400000, // Kline start time
     "T": 123460000, // Kline close time
-    "s": "BNBBTC",  // Symbol
+    "s": "ETH/NXM",  // Symbol
     "i": "1m",      // Interval
     "f": 100,       // First trade ID
     "L": 200,       // Last trade ID
@@ -116,7 +115,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
   {
     "e": "24hrMiniTicker",  // Event type
     "E": 123456789,         // Event time
-    "s": "BNBBTC",          // Symbol
+    "s": "ETH/NXM",          // Symbol
     "c": "0.0025",          // Current day's close price
     "o": "0.0010",          // Open price
     "h": "0.0025",          // High price
@@ -150,7 +149,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 {
   "e": "24hrTicker",  // Event type
   "E": 123456789,     // Event time
-  "s": "BNBBTC",      // Symbol
+  "s": "ETH/NXM",      // Symbol
   "p": "0.0015",      // Price change
   "P": "250.00",      // Price change percent
   "w": "0.0018",      // Weighted average price
@@ -224,7 +223,7 @@ Order book price and quantity depth updates used to locally manage an order book
 {
   "e": "depthUpdate", // Event type
   "E": 123456789,     // Event time
-  "s": "BNBBTC",      // Symbol
+  "s": "ETH/NXM",      // Symbol
   "U": 157,           // First update ID in event
   "u": 160,           // Final update ID in event
   "b": [              // Bids to be updated
@@ -245,13 +244,12 @@ Order book price and quantity depth updates used to locally manage an order book
 ```
 
 ## How to manage a local order book correctly
-1. Open a stream to **wss://stream.binance.com:9443/ws/bnbbtc@depth**
+1. Open a stream to **wss://stream.naxomart.com:9433/ws/bnbbtc@depth**
 2. Buffer the events you receive from the stream
-3. Get a depth snapshot from **https://www.binance.com/api/v1/depth?symbol=BNBBTC&limit=1000**
-4. Drop any event where `u` is <= `lastUpdateId` in the snapshot
-5. The first processed should have `U` <= `lastUpdateId`+1 **AND** `u` >= `lastUpdateId`+1
-6. While listening to the stream, each new event's `U` should be equal to the previous event's `u`+1
-7. The data in each event is the **absolute** quantity for a price level
-8. If the quantity is 0, **remove** the price level
-9. Receiving an event that removes a price level that is not in your local order book can happen and is normal.
+3. Drop any event where `u` is <= `lastUpdateId` in the snapshot
+4. The first processed should have `U` <= `lastUpdateId`+1 **AND** `u` >= `lastUpdateId`+1
+5. While listening to the stream, each new event's `U` should be equal to the previous event's `u`+1
+6. The data in each event is the **absolute** quantity for a price level
+7. If the quantity is 0, **remove** the price level
+8. Receiving an event that removes a price level that is not in your local order book can happen and is normal.
 
